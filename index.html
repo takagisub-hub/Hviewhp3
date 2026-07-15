@@ -395,11 +395,11 @@
       text-decoration: none;
     }
   
-    /* ===== H view Opening Animation ===== */
+    /* ===== H view Opening Animation / POP CONNECT ===== */
     .hv-open-page {
       opacity: 0;
-      transform: scale(1.018);
-      animation: hvOpenPageIn 0.95s cubic-bezier(.22,.82,.25,1) 3.05s forwards;
+      transform: translateY(10px) scale(1.012);
+      animation: hvOpenPageIn .85s cubic-bezier(.22,.82,.25,1) 3.65s forwards;
     }
 
     .hv-opening {
@@ -408,178 +408,309 @@
       z-index: 99999;
       overflow: hidden;
       pointer-events: auto;
-      animation: hvOpeningHide 0.01s linear 4.2s forwards;
-    }
-
-    .hv-opening__orange,
-    .hv-opening__cream {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      will-change: transform, width;
-    }
-
-    .hv-opening__orange {
-      left: 0;
-      width: 100%;
-      background: #f45b0a;
-      animation:
-        hvOrangeNarrow .9s cubic-bezier(.76,0,.24,1) 2.28s forwards,
-        hvOrangeLeave .95s cubic-bezier(.76,0,.24,1) 3.08s forwards;
-    }
-
-    .hv-opening__cream {
-      right: 0;
-      width: 0;
       background: #faf8f5;
-      animation:
-        hvCreamGrow .9s cubic-bezier(.76,0,.24,1) 2.28s forwards,
-        hvCreamLeave .95s cubic-bezier(.76,0,.24,1) 3.08s forwards;
+      animation: hvOpeningHide .01s linear 4.55s forwards;
+    }
+
+    .hv-opening__scene {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      animation: hvSceneOut .72s cubic-bezier(.65,0,.35,1) 3.22s forwards;
+    }
+
+    .hv-opening__sun {
+      position: absolute;
+      width: 310px;
+      height: 310px;
+      border-radius: 50%;
+      background: #f7c94b;
+      left: -110px;
+      top: -115px;
+      opacity: 0;
+      transform: scale(.5);
+      animation: hvBubbleIn .8s cubic-bezier(.18,.88,.22,1.2) .12s forwards,
+                 hvFloatA 3.2s ease-in-out .9s infinite alternate;
+    }
+
+    .hv-opening__pink {
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border-radius: 44% 56% 62% 38% / 45% 39% 61% 55%;
+      background: #ff948c;
+      right: -42px;
+      bottom: 15%;
+      opacity: 0;
+      transform: rotate(12deg) scale(.45);
+      animation: hvBubbleIn .8s cubic-bezier(.18,.88,.22,1.2) .32s forwards,
+                 hvFloatB 2.8s ease-in-out 1s infinite alternate;
+    }
+
+    .hv-opening__orange-dot,
+    .hv-opening__orange-dot::before,
+    .hv-opening__orange-dot::after {
+      position: absolute;
+      content: '';
+      border-radius: 50%;
+      background: #e85514;
+    }
+
+    .hv-opening__orange-dot {
+      width: 42px;
+      height: 42px;
+      right: 17%;
+      top: 17%;
+      opacity: 0;
+      transform: scale(.2);
+      animation: hvDotPop .55s cubic-bezier(.18,.88,.22,1.35) .72s forwards;
+    }
+
+    .hv-opening__orange-dot::before {
+      width: 18px;
+      height: 18px;
+      left: -58px;
+      top: 42px;
+      opacity: .45;
+    }
+
+    .hv-opening__orange-dot::after {
+      width: 12px;
+      height: 12px;
+      right: -36px;
+      top: -44px;
+      opacity: .28;
+    }
+
+    .hv-opening__cloud {
+      position: absolute;
+      width: 160px;
+      height: 58px;
+      border-radius: 999px;
+      background: white;
+      box-shadow: 0 16px 38px rgba(132, 84, 48, .08);
+      opacity: 0;
+    }
+
+    .hv-opening__cloud::before,
+    .hv-opening__cloud::after {
+      content: '';
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .hv-opening__cloud::before {
+      width: 74px;
+      height: 74px;
+      left: 24px;
+      top: -33px;
+    }
+
+    .hv-opening__cloud::after {
+      width: 92px;
+      height: 92px;
+      right: 18px;
+      top: -45px;
+    }
+
+    .hv-opening__cloud--one {
+      left: 8%;
+      bottom: 18%;
+      transform: translateX(-90px) scale(.86);
+      animation: hvCloudIn .85s cubic-bezier(.18,.88,.22,1) .48s forwards,
+                 hvCloudFloat 2.8s ease-in-out 1.33s infinite alternate;
+    }
+
+    .hv-opening__cloud--two {
+      right: 9%;
+      top: 25%;
+      transform: translateX(90px) scale(.58);
+      animation: hvCloudInRight .85s cubic-bezier(.18,.88,.22,1) .62s forwards,
+                 hvCloudFloat 3.1s ease-in-out 1.47s infinite alternate-reverse;
     }
 
     .hv-opening__brand {
       position: absolute;
       inset: 0;
-      z-index: 3;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #1a1a1a;
+      transform: translateY(-6px);
+    }
+
+    .hv-opening__h-badge {
+      width: 94px;
+      height: 94px;
+      border-radius: 22px;
+      background: #e85514;
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 26px;
-      color: #fff;
-      transform: translateY(3px);
-      animation: hvBrandExit .65s cubic-bezier(.65,0,.35,1) 2.12s forwards;
-    }
-
-    .hv-opening__h {
-      position: relative;
-      width: 128px;
-      height: 112px;
-      filter: drop-shadow(0 10px 30px rgba(100, 30, 0, .08));
-    }
-
-    .hv-opening__h span {
-      position: absolute;
-      background: #fff;
-      border-radius: 11px;
-    }
-
-    .hv-opening__h-left {
-      left: 0;
-      top: 0;
-      width: 34px;
-      height: 112px;
-      transform: scaleY(0);
-      transform-origin: center;
-      animation: hvBarIn .68s cubic-bezier(.18,.88,.22,1) .22s forwards;
-    }
-
-    .hv-opening__h-right {
-      right: 0;
-      top: 0;
-      width: 34px;
-      height: 112px;
-      transform: scaleY(0);
-      transform-origin: center;
-      animation: hvBarIn .68s cubic-bezier(.18,.88,.22,1) .42s forwards;
-    }
-
-    .hv-opening__h-mid {
-      left: 26px;
-      top: 41px;
-      width: 76px;
-      height: 31px;
-      transform: scaleX(0);
-      transform-origin: left;
-      animation: hvMidIn .62s cubic-bezier(.18,.88,.22,1) .78s forwards;
+      font-size: 58px;
+      line-height: 1;
+      font-weight: 900;
+      opacity: 0;
+      transform: translateY(28px) scale(.35) rotate(-9deg);
+      box-shadow: 0 18px 35px rgba(232, 85, 20, .19);
+      animation: hvBadgePop .78s cubic-bezier(.18,.88,.22,1.3) .58s forwards;
     }
 
     .hv-opening__word {
+      margin-top: 18px;
       display: flex;
       align-items: baseline;
-      gap: 14px;
+      gap: 12px;
       white-space: nowrap;
-      opacity: 0;
-      transform: translateX(-14px);
-      animation: hvWordIn .7s cubic-bezier(.18,.88,.22,1) 1.08s forwards;
+      overflow: hidden;
     }
 
     .hv-opening__word strong {
-      font-size: 64px;
+      display: inline-block;
+      font-size: 57px;
       line-height: 1;
       letter-spacing: -3px;
-      font-weight: 800;
+      font-weight: 850;
+      opacity: 0;
+      transform: translateY(48px) rotate(3deg);
+      animation: hvWordBounce .72s cubic-bezier(.18,.88,.22,1.15) 1.06s forwards;
     }
 
     .hv-opening__word small {
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: .18em;
-      opacity: .76;
-      text-transform: uppercase;
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      color: #e85514;
+      opacity: 0;
+      transform: translateY(25px);
+      animation: hvWordBounce .65s cubic-bezier(.18,.88,.22,1.08) 1.28s forwards;
     }
 
-    .hv-opening__line {
+    .hv-opening__spark {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      left: calc(50% + 168px);
+      top: calc(50% - 86px);
+      opacity: 0;
+      transform: scale(.2) rotate(0deg);
+      animation: hvSparkPop .58s cubic-bezier(.18,.88,.22,1.4) 1.54s forwards;
+    }
+
+    .hv-opening__spark::before,
+    .hv-opening__spark::after {
+      content: '';
       position: absolute;
       left: 50%;
-      top: calc(50% + 91px);
-      z-index: 3;
-      width: 0;
-      height: 2px;
-      background: rgba(255,255,255,.75);
-      transform: translateX(-50%);
-      animation:
-        hvLineIn .7s cubic-bezier(.18,.88,.22,1) 1.48s forwards,
-        hvLineOut .43s ease 2.02s forwards;
+      top: 50%;
+      background: #f7c94b;
+      border-radius: 999px;
+      transform: translate(-50%,-50%);
     }
 
-    @keyframes hvBarIn {
-      from { transform: scaleY(0); opacity: .2; }
-      to { transform: scaleY(1); opacity: 1; }
+    .hv-opening__spark::before { width: 5px; height: 22px; }
+    .hv-opening__spark::after { width: 22px; height: 5px; }
+
+    .hv-opening__tagline {
+      margin-top: 14px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      color: #777;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: hvTagIn .5s ease 1.62s forwards;
     }
 
-    @keyframes hvMidIn {
-      from { transform: scaleX(0); opacity: .3; }
-      to { transform: scaleX(1); opacity: 1; }
+    .hv-opening__wipe {
+      position: absolute;
+      z-index: 8;
+      left: 50%;
+      top: 50%;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #e85514;
+      transform: translate(-50%, -50%) scale(0);
+      animation: hvWipe 1.15s cubic-bezier(.72,0,.22,1) 2.48s forwards;
     }
 
-    @keyframes hvWordIn {
-      to { opacity: 1; transform: translateX(0); }
+    .hv-opening__wipe::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: #faf8f5;
+      transform: scale(0);
+      animation: hvWipeInner .72s cubic-bezier(.72,0,.22,1) 3.18s forwards;
     }
 
-    @keyframes hvLineIn {
-      to { width: 260px; }
+    @keyframes hvBubbleIn {
+      to { opacity: .92; transform: scale(1); }
     }
 
-    @keyframes hvLineOut {
-      to { width: 0; opacity: 0; }
+    @keyframes hvFloatA {
+      to { transform: translate(14px, 10px) scale(1.04); }
     }
 
-    @keyframes hvBrandExit {
-      to {
-        opacity: 0;
-        transform: translateY(-14px) scale(.965);
-        filter: blur(7px);
-      }
+    @keyframes hvFloatB {
+      to { transform: translate(-12px, -8px) rotate(22deg) scale(1.04); }
     }
 
-    @keyframes hvOrangeNarrow {
-      to { width: 62%; }
+    @keyframes hvDotPop {
+      to { opacity: 1; transform: scale(1); }
     }
 
-    @keyframes hvCreamGrow {
-      to { width: 38%; }
+    @keyframes hvCloudIn {
+      to { opacity: .98; transform: translateX(0) scale(.86); }
     }
 
-    @keyframes hvOrangeLeave {
-      to { transform: translateX(-104%); }
+    @keyframes hvCloudInRight {
+      to { opacity: .9; transform: translateX(0) scale(.58); }
     }
 
-    @keyframes hvCreamLeave {
-      to { transform: translateX(104%); }
+    @keyframes hvCloudFloat {
+      to { transform: translateY(-11px) scale(var(--cloud-scale, 1)); }
+    }
+
+    @keyframes hvBadgePop {
+      68% { opacity: 1; transform: translateY(-8px) scale(1.06) rotate(2deg); }
+      100% { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
+    }
+
+    @keyframes hvWordBounce {
+      70% { opacity: 1; transform: translateY(-5px) rotate(-1deg); }
+      100% { opacity: 1; transform: translateY(0) rotate(0); }
+    }
+
+    @keyframes hvSparkPop {
+      70% { opacity: 1; transform: scale(1.25) rotate(70deg); }
+      100% { opacity: 1; transform: scale(1) rotate(45deg); }
+    }
+
+    @keyframes hvTagIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes hvSceneOut {
+      to { opacity: 0; transform: scale(.98); filter: blur(3px); }
+    }
+
+    @keyframes hvWipe {
+      to { transform: translate(-50%, -50%) scale(26); }
+    }
+
+    @keyframes hvWipeInner {
+      to { transform: scale(1); }
     }
 
     @keyframes hvOpenPageIn {
-      to { opacity: 1; transform: scale(1); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     @keyframes hvOpeningHide {
@@ -587,43 +718,46 @@
     }
 
     @media (max-width: 700px) {
-      .hv-opening__brand { gap: 17px; }
-      .hv-opening__h { width: 82px; height: 72px; }
-      .hv-opening__h-left,
-      .hv-opening__h-right { width: 22px; height: 72px; border-radius: 8px; }
-      .hv-opening__h-mid { left: 17px; top: 26px; width: 48px; height: 20px; border-radius: 7px; }
-      .hv-opening__word strong { font-size: 39px; letter-spacing: -2px; }
+      .hv-opening__sun { width: 220px; height: 220px; left: -92px; top: -96px; }
+      .hv-opening__pink { width: 130px; height: 130px; right: -48px; }
+      .hv-opening__cloud--one { left: 2%; bottom: 13%; transform: translateX(-90px) scale(.62); }
+      .hv-opening__cloud--two { right: -3%; top: 23%; transform: translateX(90px) scale(.44); }
+      .hv-opening__h-badge { width: 78px; height: 78px; border-radius: 18px; font-size: 48px; }
+      .hv-opening__word { margin-top: 16px; }
+      .hv-opening__word strong { font-size: 42px; letter-spacing: -2px; }
       .hv-opening__word small { display: none; }
+      .hv-opening__tagline { font-size: 10px; letter-spacing: .11em; }
+      .hv-opening__spark { left: calc(50% + 108px); top: calc(50% - 72px); }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .hv-opening { display: none; }
       .hv-open-page { animation: none; opacity: 1; transform: none; }
     }
-
   </style>
 </head>
 <body>
 
   <!-- H view Opening -->
   <div class="hv-opening" aria-hidden="true">
-    <div class="hv-opening__orange"></div>
-    <div class="hv-opening__cream"></div>
+    <div class="hv-opening__scene">
+      <div class="hv-opening__sun"></div>
+      <div class="hv-opening__pink"></div>
+      <div class="hv-opening__orange-dot"></div>
+      <div class="hv-opening__cloud hv-opening__cloud--one"></div>
+      <div class="hv-opening__cloud hv-opening__cloud--two"></div>
 
-    <div class="hv-opening__brand">
-      <div class="hv-opening__h">
-        <span class="hv-opening__h-left"></span>
-        <span class="hv-opening__h-mid"></span>
-        <span class="hv-opening__h-right"></span>
+      <div class="hv-opening__brand">
+        <div class="hv-opening__h-badge">H</div>
+        <div class="hv-opening__word">
+          <strong>H view</strong>
+          <small>MAKE EVERYDAY EXCITING</small>
+        </div>
+        <div class="hv-opening__tagline">毎日に、もっとワクワクを。</div>
       </div>
-
-      <div class="hv-opening__word">
-        <strong>H view</strong>
-        <small>make everyday exciting</small>
-      </div>
+      <div class="hv-opening__spark"></div>
     </div>
-
-    <div class="hv-opening__line"></div>
+    <div class="hv-opening__wipe"></div>
   </div>
 
   <div class="layout hv-open-page">
