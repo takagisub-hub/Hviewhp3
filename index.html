@@ -26,11 +26,11 @@
 
     /* 左側：固定エリア */
     .left-panel {
-      flex: 0 0 62%;
       position: fixed;
       top: 0;
       left: 0;
-      width: 62%;
+      width: 62vw;
+      max-width: 62vw;
       height: 100vh;
       overflow: hidden;
     }
@@ -45,8 +45,8 @@
 
     /* 右側：スクロールエリア */
     .right-panel {
-      margin-left: 62%;
-      width: 38%;
+      margin-left: 62vw;
+      width: calc(100vw - 62vw);
       height: 100vh;
       overflow-y: auto;
       background: #faf8f5;
